@@ -1,0 +1,58 @@
+{
+  "name": "pitsanujiw.me",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@react-spring/addons": "^9.0.0-beta.33",
+    "@react-spring/shared": "^9.0.0-rc.2",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.4",
+    "@testing-library/user-event": "^12.1.6",
+    "axios": "^0.21.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-icons": "^4.1.0",
+    "react-scripts": "4.0.1",
+    "react-scroll": "^1.8.1",
+    "react-spring": "^8.0.27",
+    "react-top-loading-bar": "^2.0.1",
+    "react-tsparticles": "^1.18.11",
+    "swr": "^0.4.1",
+    "tslib": "^2.0.3",
+    "typescript": "^4.0.3",
+    "web-vitals": "^0.2.4"
+  },
+  "scripts": {
+    "build:tailwind": "postcss ./src/tailwind.dev.css -o ./src/tailwind.build.css",
+    "start": "yarn build:tailwind && react-scripts start",
+    "build": "yarn build:tailwind && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.2",
+    "@types/react": "^16.9.50",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-scroll": "^1.8.2",
+    "autoprefixer": "^9.8.6",
+    "postcss": "^8.2.4",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.0.2"
+  }
+}
