@@ -20,7 +20,7 @@ export const HomePage = () => {
                 <div className="container mx-auto rounded rounded-t-lg overflow-hidden shadow max-w-xs my-3 dark:bg-gray-900">
                     <img src="https://i.imgur.com/dYcYQ7E.png" alt="" className="w-full" />
                     <div className="flex justify-center -mt-8">
-                        <img src={data?.avatar_url} alt="" className="rounded-full border-solid border-white border-2 -mt-3 w-20" />
+                        <img src={data?.avatar_url} alt="" className="rounded-full border-solid border-white border-2 -mt-3 w-20 h-20" />
                     </div>
                     <div className="text-center px-3 pb-6 pt-2">
                         <h3 className="text-black text-sm bold font-sans dark:text-white">{data?.name}</h3>
