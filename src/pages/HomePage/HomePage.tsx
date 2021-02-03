@@ -1,10 +1,13 @@
-import { Navbar } from '../../components'
+import { Navbar, ParticleTheme, SocialNetWork } from '../../components'
 import useSWR from 'swr'
 import { ServiceHelper } from '../../utils'
 import { GithubProfile } from '../../interfaces'
+import React from 'react';
+
 export const HomePage = () => {
     const { data, } = useSWR<GithubProfile,
         Error>('/users/pitsanujiw', (url) => ServiceHelper.requestData({ url }))
+
     if (!data) {
         return <div className="relative flex justify-center items-center h-screen">
             <div className="inline-block animate-spin ease duration-300 w-5 h-5 bg-black mx-2"></div>
@@ -13,64 +16,30 @@ export const HomePage = () => {
             <div className="inline-block animate-bounce ease duration-300 w-5 h-5 bg-black mx-2"></div>
         </div>
     }
+
     return (
         <div>
             <Navbar />
-            <div className="py-20 min-h-screen">
-                <div className="container mx-auto rounded rounded-t-lg overflow-hidden shadow max-w-xs my-3 dark:bg-gray-900">
-                    <img src="https://i.imgur.com/dYcYQ7E.png" alt="" className="w-full" />
-                    <div className="flex justify-center -mt-8">
-                        <img src={data?.avatar_url} alt="" className="rounded-full border-solid border-white border-2 -mt-3 w-20 h-20" />
-                    </div>
-                    <div className="text-center px-3 pb-6 pt-2">
-                        <h3 className="text-black text-sm bold font-sans dark:text-white">{data?.name}</h3>
-                        <p className="mt-2 font-sans font-light text-grey-dark dark:text-white">{data?.bio}</p>
-                    </div>
-                    <div className="flex justify-center pb-3 text-grey-dark dark:text-white">
-                        <div className="text-center mr-3 border-r pr-3">
-                            <h2>{data?.followers}</h2>
-                            <span>Followers</span>
+            <ParticleTheme />
+            <div className="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto py-32 lg:my-0 z-40">
+                <div id="profile" className="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
+                    <div className="p-4 md:p-12 text-center lg:text-left">
+                        <div className="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center" style={{ backgroundImage: `url(${data?.avatar_url})` }}></div>
+                        <h1 className="text-3xl font-bold pt-8 lg:pt-0">{data?.name}</h1>
+                        <div className="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-black opacity-25"></div>
+                        <p className="pt-4 text-base font-bold flex items-center justify-center lg:justify-start"><svg className="h-4 fill-current text-green-700 pr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9 12H1v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6h-8v2H9v-2zm0-1H0V5c0-1.1.9-2 2-2h4V2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1h4a2 2 0 0 1 2 2v6h-9V9H9v2zm3-8V2H8v1h4z" /></svg>{data?.company}</p>
+                        <p className="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start"><svg className="h-4 fill-current text-green-700 pr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm7.75-8a8.01 8.01 0 0 0 0-4h-3.82a28.81 28.81 0 0 1 0 4h3.82zm-.82 2h-3.22a14.44 14.44 0 0 1-.95 3.51A8.03 8.03 0 0 0 16.93 14zm-8.85-2h3.84a24.61 24.61 0 0 0 0-4H8.08a24.61 24.61 0 0 0 0 4zm.25 2c.41 2.4 1.13 4 1.67 4s1.26-1.6 1.67-4H8.33zm-6.08-2h3.82a28.81 28.81 0 0 1 0-4H2.25a8.01 8.01 0 0 0 0 4zm.82 2a8.03 8.03 0 0 0 4.17 3.51c-.42-.96-.74-2.16-.95-3.51H3.07zm13.86-8a8.03 8.03 0 0 0-4.17-3.51c.42.96.74 2.16.95 3.51h3.22zm-8.6 0h3.34c-.41-2.4-1.13-4-1.67-4S8.74 3.6 8.33 6zM3.07 6h3.22c.2-1.35.53-2.55.95-3.51A8.03 8.03 0 0 0 3.07 6z" /></svg> Your Location - {data?.location}</p>
+                        <p className="pt-8 text-sm">{data?.bio}</p>
+                        <div className="pt-12 pb-8">
+                            <button onClick={() => window.open("https://github.com/pitsanujiw/pitsanujiw.me", "_blank")} className="bg-black hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-full">
+                                Get Repository
+				</button>
                         </div>
-                        <div className="text-center">
-                            <h2>{data?.following}</h2>
-                            <span>Following</span>
-                        </div>
+                        <SocialNetWork {...data} />
                     </div>
                 </div>
-                <div className="container grid py-5 px-5">
-                    <div className="grid  gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">
-                        <div className="flex items-center p-4 bg-white rounded-lg shadow dark:bg-gray-900">
-                            <div className="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
-                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p className="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                    Public Repository
-                    </p>
-                                <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {data?.public_repos}
-                                </p>
-                            </div>
-                        </div>
-                        <div className="flex items-center p-4 bg-white rounded-lg shadow dark:bg-gray-900">
-                            <div className="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
-                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p className="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                    Public Gist
-                    </p>
-                                <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    {data?.public_gists}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
+                <div className="w-full lg:w-2/5 z-40">
+                    <img src={data?.avatar_url} alt="" className="rounded-none lg:rounded-lg shadow-2xl hidden lg:block" />
                 </div>
             </div>
         </div>
