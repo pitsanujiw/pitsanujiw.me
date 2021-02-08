@@ -8,7 +8,9 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js" />
+        </Head>
         <body>
           <Main />
           <NextScript />

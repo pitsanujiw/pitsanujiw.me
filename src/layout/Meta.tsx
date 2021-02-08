@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { NextSeo } from 'next-seo';
-import Head from 'next/head';
-
 import { Config } from '@/utils';
+import { NextSeo, SocialProfileJsonLd } from 'next-seo';
+import Head from 'next/head';
 
 type IMetaProps = {
   title: string;
@@ -15,7 +14,11 @@ const Meta = (props: IMetaProps) => (
   <>
     <Head>
       <meta charSet="UTF-8" />
-      <meta name="viewport" content="width=device-width,initial-scale=1" key="viewport" />
+      <meta
+        name="viewport"
+        content="width=device-width,initial-scale=1"
+        key="viewport"
+      />
       <link
         rel="apple-touch-icon"
         href={`${process.env.baseUrl}/apple-touch-icon.png`}
@@ -35,7 +38,11 @@ const Meta = (props: IMetaProps) => (
         href={`${process.env.baseUrl}/favicon-16x16.png`}
         key="icon16"
       />
-      <link rel="icon" href={`${process.env.baseUrl}/favicon.ico`} key="favicon" />
+      <link
+        rel="icon"
+        href={`${process.env.baseUrl}/favicon.ico`}
+        key="favicon"
+      />
     </Head>
     <NextSeo
       title={props.title}
@@ -48,6 +55,16 @@ const Meta = (props: IMetaProps) => (
         locale: Config.locale,
         site_name: Config.site_name,
       }}
+    />
+    <SocialProfileJsonLd
+      type="Person"
+      name="Pitsanu `Jiw`"
+      url="https://jiwpitsanu.netlify.app/"
+      sameAs={[
+        'http://www.facebook.com/pitsanujiww',
+        'http://instagram.com/pitsanujiw',
+        'http://www.linkedin.com/in/pitsanujiw',
+      ]}
     />
   </>
 );
