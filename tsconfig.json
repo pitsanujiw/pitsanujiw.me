@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["node", "lodash", "express"],
+    "types": ["node"],
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
