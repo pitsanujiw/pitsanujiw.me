@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["node", "lodash", "express"],
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -34,36 +31,15 @@
     "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@/components/*": [
-        "src/components/*"
-      ],
-      "@/utils/*": [
-        "src/utils/*"
-      ],
-      "@/interface/*": [
-        "src/interface/*"
-      ],
-      "@/layout/*": [
-        "src/layout/*"
-      ],
-      "@/pages/*": [
-        "src/pages/*"
-      ],
-      "@/templates/*": [
-        "src/templates/*"
-      ]
+      "@/*": ["src/*"],
+      "@/components/*": ["src/components/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/interface/*": ["src/interface/*"],
+      "@/layout/*": ["src/layout/*"],
+      "@/pages/*": ["src/pages/*"],
+      "@/templates/*": ["src/templates/*"]
     }
   },
-  "exclude": [
-    "./dist/**/*",
-    "./node_modules/**/*"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "exclude": ["./dist/**/*", "./node_modules/**/*"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
