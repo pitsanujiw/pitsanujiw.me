@@ -1,33 +1,37 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosRequestConfig } from "axios";
 
 export enum HTTPMethod {
-    GET = 'GET',
-    POST = 'POST',
-    PATCH = 'PATCH',
-    DELETE = 'DELETE',
-    PUT = 'PUT',
+  GET = "GET",
+  POST = "POST",
+  PATCH = "PATCH",
+  DELETE = "DELETE",
+  PUT = "PUT",
 }
 
 export class ServiceHelper {
-    public static getBaseUrl(): string {
+  public static getBaseUrl(): string {
+    return "https://api.github.com";
+  }
 
-        return 'https://api.github.com';
+  public static async requestData({
+    method = HTTPMethod.GET,
+    url,
+    headers,
+    data,
+  }: AxiosRequestConfig) {
+    const requestUrl = `${this.getBaseUrl()}${url}`;
+    const options = {
+      method,
+      headers,
+      data,
+    };
+
+    try {
+      const { data: responseData } = await axios(requestUrl, options);
+      return responseData;
+    } catch (e) {
+      console.error(e);
+      throw new Error(e);
     }
-
-    public static async requestData({ method = HTTPMethod.GET, url, headers, data }: AxiosRequestConfig) {
-        const requestUrl = `${this.getBaseUrl()}${url}`;
-        const options = {
-            method,
-            headers,
-            data,
-        };
-
-        try {
-            const { data: responseData } = await axios(requestUrl, options);
-            return responseData;
-        } catch (e) {
-            console.error(e);
-            throw new Error(e);
-        }
-    }
+  }
 }

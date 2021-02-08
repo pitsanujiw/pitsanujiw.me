@@ -1,1 +1,1 @@
-export * from './githubProfile'
+export * from "./githubProfile";
