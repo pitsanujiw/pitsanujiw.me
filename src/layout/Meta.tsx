@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import { Config } from '@/utils';
-import { NextSeo, SocialProfileJsonLd } from 'next-seo';
-import Head from 'next/head';
+import { Config } from "@/utils";
+import { NextSeo } from "next-seo";
+import Head from "next/head";
 
 type IMetaProps = {
   title: string;
@@ -19,6 +19,12 @@ const Meta = (props: IMetaProps) => (
         content="width=device-width,initial-scale=1"
         key="viewport"
       />
+      <meta
+        name="og:image"
+        content="https://avatars.githubusercontent.com/u/30042217?v=4"
+      />
+      <meta name="og:description" content="Pitsanu's Jiw - Profile" />
+
       <link
         rel="apple-touch-icon"
         href={`${process.env.baseUrl}/apple-touch-icon.png`}
@@ -55,16 +61,6 @@ const Meta = (props: IMetaProps) => (
         locale: Config.locale,
         site_name: Config.site_name,
       }}
-    />
-    <SocialProfileJsonLd
-      type="Person"
-      name="Pitsanu `Jiw`"
-      url="https://jiwpitsanu.netlify.app/"
-      sameAs={[
-        'http://www.facebook.com/pitsanujiww',
-        'http://instagram.com/pitsanujiw',
-        'http://www.linkedin.com/in/pitsanujiw',
-      ]}
     />
   </>
 );
