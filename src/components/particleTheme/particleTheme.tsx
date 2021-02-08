@@ -1,6 +1,6 @@
 import React from 'react'
 import Particles from "react-tsparticles";
-import { ThemeContext } from '../../utils';
+import { ThemeContext } from '@/utils';
 
 export const ParticleTheme = () => {
     const { theme, }: any = React.useContext(ThemeContext);

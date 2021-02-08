@@ -1,58 +1,63 @@
 {
-  "name": "pitsanujiw.me",
-  "version": "0.1.0",
-  "private": true,
+  "name": "next-js-boilerplate",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next --port 8080",
+    "build": "next build",
+    "start": "next start",
+    "build-stats": "ANALYZE=true npm run build",
+    "export": "next export -o dist",
+    "build-prod": "run-s clean build export",
+    "clean": "rimraf .next dist",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+  },
   "dependencies": {
-    "@react-spring/addons": "^9.0.0-beta.33",
-    "@react-spring/shared": "^9.0.0-rc.2",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.0.4",
-    "@testing-library/user-event": "^12.1.6",
     "axios": "^0.21.1",
+    "next": "^10.0.4",
+    "next-seo": "^4.17.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-icons": "^4.1.0",
-    "react-scripts": "4.0.1",
-    "react-scroll": "^1.8.1",
-    "react-spring": "^8.0.27",
-    "react-top-loading-bar": "^2.0.1",
-    "react-tsparticles": "^1.18.11",
-    "swr": "^0.4.1",
-    "tslib": "^2.0.3",
-    "typescript": "^4.0.3",
-    "web-vitals": "^0.2.4"
-  },
-  "scripts": {
-    "build:tailwind": "postcss ./src/tailwind.dev.css -o ./src/tailwind.build.css",
-    "start": "yarn build:tailwind && react-scripts start",
-    "build": "yarn build:tailwind && react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "react-icons": "^4.2.0",
+    "react-tsparticles": "^1.18.12",
+    "styled-jsx-plugin-postcss": "^4.0.0",
+    "swr": "^0.4.2"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.2",
-    "@types/react": "^16.9.50",
-    "@types/react-dom": "^16.9.8",
-    "@types/react-scroll": "^1.8.2",
-    "autoprefixer": "^9.8.6",
-    "postcss": "^8.2.4",
-    "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.0.2"
-  }
+    "@next/bundle-analyzer": "^10.0.4",
+    "@types/node": "^14.14.19",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "autoprefixer": "^10.1.0",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.2.2",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^2.0.2",
+    "typescript": "^4.1.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "eslint"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  },
+  "license": "ISC"
 }

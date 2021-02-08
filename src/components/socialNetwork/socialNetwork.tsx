@@ -1,4 +1,4 @@
-import { GithubProfile } from '../../interfaces'
+import { GithubProfile } from '@/interfaces'
 
 export const SocialNetWork = (data: GithubProfile) => {
     return (
