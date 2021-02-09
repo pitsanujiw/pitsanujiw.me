@@ -1,6 +1,11 @@
 import React from "react";
 
-import { Navbar, ParticleTheme, SocialNetWork } from "@/components";
+import {
+  Navbar,
+  ParticleTheme,
+  SocialNetWork,
+  LoadingWidget,
+} from "@/components";
 import { GithubProfile } from "@/interfaces";
 import { Meta } from "@/layout";
 import { Main } from "@/templates";
@@ -8,19 +13,16 @@ import { ServiceHelper } from "@/utils";
 import useSWR from "swr";
 
 const Index = () => {
-  const { data } = useSWR<GithubProfile, Error>("/users/pitsanujiw", (url) =>
-    ServiceHelper.requestData({ url })
+  const { data, error } = useSWR<GithubProfile, Error>(
+    "/users/pitsanujiw",
+    (url) => ServiceHelper.requestData({ url })
   );
 
   if (!data) {
-    return (
-      <div className="relative flex justify-center items-center h-screen">
-        <div className="inline-block animate-spin ease duration-300 w-5 h-5 bg-black mx-2" />
-        <div className="inline-block animate-ping ease duration-300 w-5 h-5 bg-black mx-2" />
-        <div className="inline-block animate-pulse ease duration-300 w-5 h-5 bg-black mx-2" />
-        <div className="inline-block animate-bounce ease duration-300 w-5 h-5 bg-black mx-2" />
-      </div>
-    );
+    return <LoadingWidget />;
+  }
+  if (error) {
+    return <LoadingWidget />;
   }
   return (
     <Main
